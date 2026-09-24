@@ -109,3 +109,9 @@ Training runs are the first AI system measured here. The same pattern (fixed que
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+---
+
+Guide: [guide.organizedai.vip/observability/beginners/](https://guide.organizedai.vip/observability/beginners/)
+
+Maintained by Jordaaan Hill ([LinkedIn](https://www.linkedin.com/in/jordaaanhill)).
