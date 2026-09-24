@@ -4,7 +4,12 @@ Measurement pros already know how to find out why a system behaves the way it do
 
 **Curriculum (read these first, the repo follows them):**
 - [Local-compute guide, section 09: Track the training](https://guide.organizedai.vip/local-compute/#track-training) - the full walkthrough this code comes from
+- [Observability field guide](https://guide.organizedai.vip/observability/) - Cloudflare observability for measurement pros, the beginner track's companion
 - [DevOps in 90 days, Phase 3: Kubernetes and observability](https://guide.organizedai.vip/devops/#phase-3) - where this stack runs on real infrastructure
+
+## New here? Start with the beginner's guide
+
+**[A beginner's guide to AI observability](docs/beginners-guide.md)**: nine plain-language steps, no prior knowledge needed. It starts with the simple, Cloudflare-native evidence used by [The Skill Loop](https://skill.organizedai.vip/loop) and [GTM Autoresearch](https://github.com/Organized-AI/gtm-autoresearch) (a file per run, then Workers Logs with structured events) and ends at the full stack below. It comes with a runnable example Worker in [`examples/beginner-worker/`](examples/beginner-worker/). Companion reading: the [Observability field guide](https://guide.organizedai.vip/observability/).
 
 ## The manifesto
 
@@ -73,6 +78,8 @@ runs.md in git stays the source of truth. D1 can be rebuilt from it.
 | `prometheus/prometheus.yml` | Scrape config for macmon and node_exporter on each Mac, plus the monitoring host itself | Untested |
 | `examples/r32-l16.prom` | Sample run record for node_exporter's textfile collector | Format only |
 | `grafana/training-runs-d1.json` | Dashboard: peak memory per run (64/96 GB lines) and peak by model and rank, read from D1 through the Worker | Panels match the tested setup; this export was not re-imported |
+| `docs/beginners-guide.md` | Nine-step beginner track, from a file per run to Workers Logs to the full stack | Guide |
+| `examples/beginner-worker/` | Pretend scoring loop that writes the five-event evidence contract to Workers Logs | Tested locally |
 | `docs/stand-up.md` | The nine steps to stand the whole stack up | Guide |
 | `docs/dashboard-test.png` | The tested dashboard, reading sample rows | Evidence |
 

@@ -1,0 +1,12 @@
+{
+  // Beginner example for AI-observability. Walkthrough: docs/beginners-guide.md
+  // Field guide: https://guide.organizedai.vip/observability/
+  "name": "loop-evidence-demo",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-01",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,              // log every run while you are learning; lower it later
+    "logs": { "invocation_logs": false }  // skip the automatic per-request log; keep only your own events
+  }
+}
