@@ -1,0 +1,9 @@
+# Runs on the always-on monitoring host (a Raspberry Pi 5 in the reference setup). Swap in your own hostnames.
+# Guide: https://guide.organizedai.vip/local-compute/#track-training
+scrape_configs:
+  - job_name: macmon
+    static_configs:
+      - targets: ['devbox.local:9101', 'mini-2.local:9101']
+  - job_name: node
+    static_configs:
+      - targets: ['devbox.local:9100', 'mini-2.local:9100', 'localhost:9100']   # localhost = the Pi

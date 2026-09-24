@@ -1,0 +1,9 @@
+{
+  // Guide: https://guide.organizedai.vip/local-compute/#track-training
+  // Secrets (not in this file): npx wrangler secret put INGEST_KEY, npx wrangler secret put READ_KEY
+  "name": "training-ingest",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-01",
+  "analytics_engine_datasets": [{ "binding": "TRAINING", "dataset": "training_runs" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "training", "database_id": "<from d1 create>" }]
+}

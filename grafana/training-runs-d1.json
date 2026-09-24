@@ -1,0 +1,186 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFINITY",
+      "label": "Infinity",
+      "type": "datasource",
+      "pluginId": "yesoreyeram-infinity-datasource",
+      "pluginName": "Infinity"
+    }
+  ],
+  "title": "AI-observability: training runs (D1)",
+  "description": "Guide: https://guide.organizedai.vip/local-compute/#track-training",
+  "uid": "ai-obs-training-runs",
+  "schemaVersion": 39,
+  "time": {
+    "from": "now-14d",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "worker_url",
+        "label": "Worker URL",
+        "type": "textbox",
+        "query": "https://training-ingest.example.workers.dev",
+        "current": {
+          "value": "https://training-ingest.example.workers.dev",
+          "text": "https://training-ingest.example.workers.dev"
+        }
+      }
+    ]
+  },
+  "links": [
+    {
+      "title": "Local-compute guide: Track the training",
+      "url": "https://guide.organizedai.vip/local-compute/#track-training",
+      "type": "link",
+      "targetBlank": true
+    },
+    {
+      "title": "DevOps in 90 days: Phase 3",
+      "url": "https://guide.organizedai.vip/devops/#phase-3",
+      "type": "link",
+      "targetBlank": true
+    }
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Peak memory per run",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "type": "json",
+          "source": "url",
+          "parser": "backend",
+          "format": "timeseries",
+          "url": "${worker_url}/query?q=runs&from=${__from}&to=${__to}",
+          "url_options": {
+            "method": "GET"
+          },
+          "root_selector": "",
+          "columns": [
+            {
+              "selector": "time",
+              "text": "time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "peak_gb",
+              "text": "Peak memory (GB)",
+              "type": "number"
+            }
+          ]
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "decgbytes",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 64
+              },
+              {
+                "color": "red",
+                "value": 96
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "points",
+            "pointSize": 10,
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "type": "table",
+      "title": "Peak by model and rank",
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 24,
+        "h": 7
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "type": "json",
+          "source": "url",
+          "parser": "backend",
+          "format": "table",
+          "url": "${worker_url}/query?q=peak_by_model&from=${__from}&to=${__to}",
+          "url_options": {
+            "method": "GET"
+          },
+          "root_selector": "",
+          "columns": [
+            {
+              "selector": "model",
+              "text": "model",
+              "type": "string"
+            },
+            {
+              "selector": "rank",
+              "text": "rank",
+              "type": "number"
+            },
+            {
+              "selector": "peak_gb",
+              "text": "max peak GB",
+              "type": "number"
+            },
+            {
+              "selector": "tok_s",
+              "text": "avg tok/s",
+              "type": "number"
+            },
+            {
+              "selector": "runs",
+              "text": "runs",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Sample run record for node_exporter's textfile collector. Replace <peak>, <tok/s>, <seconds> with real numbers.
+# Guide: https://guide.organizedai.vip/local-compute/#track-training
+training_peak_memory_gb{run="r32-l16",model="qwen3.8-27b-8bit",rank="32",layers="16",seq_len="1024"} <peak>
+training_tokens_per_second{run="r32-l16",model="qwen3.8-27b-8bit"} <tok/s>
+training_wall_seconds{run="r32-l16",model="qwen3.8-27b-8bit"} <seconds>
