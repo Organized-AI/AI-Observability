@@ -4,10 +4,13 @@ Measurement pros already know how to find out why a system behaves the way it do
 
 **Curriculum (read these first, the repo follows them):**
 - [Local-compute guide, section 09: Track the training](https://guide.organizedai.vip/local-compute/#track-training) - the full walkthrough this code comes from
+- [Observability from zero](https://guide.organizedai.vip/observability/beginners/) - the beginner track as an illustrated guide, chapter 00 of the field guide
 - [Observability field guide](https://guide.organizedai.vip/observability/) - Cloudflare observability for measurement pros, the beginner track's companion
 - [DevOps in 90 days, Phase 3: Kubernetes and observability](https://guide.organizedai.vip/devops/#phase-3) - where this stack runs on real infrastructure
 
 ## New here? Start with the beginner's guide
+
+**Read it with diagrams: [Observability from zero](https://guide.organizedai.vip/observability/beginners/)**, the illustrated version on the field guide site, with the five-event flow, retention tiers, and a real GTM Autoresearch run charted.
 
 **[A beginner's guide to AI observability](docs/beginners-guide.md)**: nine plain-language steps, no prior knowledge needed. It starts with the simple, Cloudflare-native evidence used by [The Skill Loop](https://skill.organizedai.vip/loop) and [GTM Autoresearch](https://github.com/Organized-AI/gtm-autoresearch) (a file per run, then Workers Logs with structured events) and ends at the full stack below. It comes with a runnable example Worker in [`examples/beginner-worker/`](examples/beginner-worker/). Companion reading: the [Observability field guide](https://guide.organizedai.vip/observability/).
 

@@ -4,6 +4,8 @@ No prior knowledge needed. If you have ever opened GTM Preview to find out why a
 
 You start with the simplest thing that works (a file per run, then Cloudflare's built-in logs) and finish at the full stack in this repo. Stop at whatever step answers your questions.
 
+**Illustrated version:** [Observability from zero](https://guide.organizedai.vip/observability/beginners/) on the field guide site has this guide with diagrams.
+
 **Read alongside:**
 - [Observability field guide](https://guide.organizedai.vip/observability/) - eight short chapters on Cloudflare observability, written for measurement pros
 - [The Skill Loop](https://skill.organizedai.vip/loop) and [GTM Autoresearch](https://github.com/Organized-AI/gtm-autoresearch) - the two loops this guide learns from
